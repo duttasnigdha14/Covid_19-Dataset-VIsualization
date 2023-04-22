@@ -64,10 +64,28 @@ order by Location
 
 
 --Creating view for further visuliazation
-create view popvsvaccTemp as
-select dea.continent,dea.location,dea.date,dea.population,vac.new_vaccinations,
-sum(convert(bigint,vac.new_vaccinations))over (partition by dea.location order by dea.location,dea.date) as TotalNewVaccination
-from Portfolio_Project..CovidVaccination$ as vac 
-join Portfolio_Project..coviddeaths$ as dea
-on vac.location=dea.location and vac.date =dea.date
-where dea.continent is not null
+
+Create view PopulationVsVaccinations as
+select 
+        dea.continent,
+        dea.location,
+        dea.population,
+        vac.new_vaccinations,
+        max(convert(bigint,vac.people_fully_vaccinated)) over (partition by dea.location order by dea.location,dea.date) as TotalNewVaccination,
+        ROW_NUMBER() over (partition by dea.location order by dea.date desc) as RowNum
+    from 
+        Portfolio_Project..CovidVaccination$ as vac 
+        join Portfolio_Project..coviddeaths$ as dea on vac.location=dea.location and vac.date =dea.date
+    where 
+        dea.continent is not null 
+select 
+    Continent,
+    Location,
+    Population,
+    TotalNewVaccination,
+    (TotalNewVaccination/Population)*100 as Vacrate
+from 
+    PopulationVsVaccination
+where 
+    RowNum = 1
+	order by Location
