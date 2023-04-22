@@ -53,9 +53,10 @@ where continent is not  null
 group by date
 order by 1,2;
 
+--Creating view on the Total cases, Total Deaths and the death Percentage Accprding to it
 --Total cases till date
-select sum(new_cases) as Totalnewcases,sum(new_deaths) as TotalNewDeaths,(sum(new_deaths)/nullif(sum(new_cases),0)) as DeathPercentage
+select max(total_cases) as Totalcases,max(total_deaths) as TotalNDeaths,max(total_deaths)/max(total_cases) as DeathPercentage
 from Portfolio_Project..coviddeaths$
-order by 1,2;
 
+order by 1,2;
 
