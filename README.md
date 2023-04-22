@@ -21,7 +21,7 @@ The information that I got from queries -
 Visualized all the information in Tableau-https://public.tableau.com/app/profile/snigdha.dutta/viz/COVID-19GlobalStatus_16821570240700/Dashboard12
 
 
-![Screenshot (15)](https://user-images.githubusercontent.com/108872975/233785421-5c6f6be7-172f-4ca5-a124-de25a08fbc6a.png
+![Screenshot (15)](https://user-images.githubusercontent.com/108872975/233785421-5c6f6be7-172f-4ca5-a124-de25a08fbc6a.png)
 ![Screenshot (16)](https://user-images.githubusercontent.com/108872975/233785437-f794bfc5-3498-4759-984a-9c5f7d47a065.png)
 
 
